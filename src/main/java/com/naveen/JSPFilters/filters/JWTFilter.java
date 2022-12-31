@@ -12,7 +12,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial")
+
 public class JWTFilter extends GenericFilter{
 
 	@Override
@@ -36,6 +36,7 @@ public class JWTFilter extends GenericFilter{
 	                throw new ServletException("Missing or invalid Authorization header");
 	            }
 	            
+	            System.out.print("************");
 	            final String token = authHeader.substring(7);
 	            final Claims claims = Jwts.parser()
 	                    .setSigningKey("secretkey")
