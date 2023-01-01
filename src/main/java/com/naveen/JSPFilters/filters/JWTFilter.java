@@ -36,10 +36,13 @@ public class JWTFilter extends GenericFilter{
 	                throw new ServletException("Missing or invalid Authorization header");
 	            }
 	            
-	            System.out.print("************");
-	            final String token = authHeader.substring(7);
+	            System.out.println("************");
+	            System.out.println(authHeader);
+//	            final String token = authHeader.substring(7);
+	           final String token = authHeader.split(" ")[1].trim();
+	           System.out.println(token);
 	            final Claims claims = Jwts.parser()
-	                    .setSigningKey("secretkey")
+	                    .setSigningKey("naveen")
 	                    .parseClaimsJws(token)
 	                    .getBody();
 	            request.setAttribute("claims", claims);
